@@ -13,24 +13,12 @@ public class DemoPage {
     WebDriver driver;
 
     //Page Elements
-
     private WebElement getElementById(String id) {
         return driver.findElement(By.id(id));
     }
-    @FindBy(id = "myTextInput")
-    WebElement textInput;
 
     @FindBy(css = "svg rect")
-    WebElement svgRect;
-
-    @FindBy(id = "checkBox6")
-    private WebElement iframeCheckbox;
-
-    @FindBy(id = "mySelect")
-    WebElement dropDown;
-
-    @FindBy(id = "meterBar")
-    WebElement meterBar;
+    private WebElement svgRect;
 
     //Constructor
     public DemoPage(WebDriver driver) {
@@ -63,7 +51,7 @@ public class DemoPage {
     }
 
     public void selectDropdownOption(String option) {
-        WebElement dropdown = getElementById("myDropdown");
+        WebElement dropDown = getElementById("myDropdown");
         Select select = new Select(dropDown);
             select.selectByVisibleText(option);
     }
