@@ -51,7 +51,7 @@ public class DemoPage {
     }
 
     public void selectDropdownOption(String option) {
-        WebElement dropDown = getElementById("myDropdown");
+        WebElement dropDown = getElementById("mySelect");
         Select select = new Select(dropDown);
             select.selectByVisibleText(option);
     }
