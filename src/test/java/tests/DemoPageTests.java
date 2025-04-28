@@ -2,13 +2,11 @@ package tests;
 
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.DemoPage;
+import utils.DriverFactory;
 import utils.ExtentReportManager;
-
-import java.time.Duration;
 
 public class DemoPageTests {
 
@@ -18,9 +16,7 @@ public class DemoPageTests {
     @BeforeClass
     public void setup() {
 
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver = DriverFactory.getDriver();
         driver.get("https://seleniumbase.io/demo_page");
         demoPage = new DemoPage(driver);
     }
@@ -88,9 +84,8 @@ public class DemoPageTests {
     @AfterClass
     public void teardown() {
         ExtentReportManager.flush();
-        if (driver != null) {
-            driver.quit();
-        }
+        DriverFactory.quitDriver();
     }
 }
+
 
